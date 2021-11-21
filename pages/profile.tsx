@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Profile() {
   return (
     <>
-      <h1>About Me</h1>
+      <h1>About Me - NaNa</h1>
       <h2>
         <Link href="/">
           <a>Back to home</a>
