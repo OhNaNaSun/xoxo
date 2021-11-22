@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/date-fns": "^2.6.0",
     "@typescript-eslint/parser": "^5.4.0",
     "date-fns": "^2.26.0",
     "gray-matter": "^4.0.3",
