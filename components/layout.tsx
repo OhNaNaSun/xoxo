@@ -3,11 +3,15 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 const name = 'NaNa';
 export const siteTitle = 'Profile Website';
-
-export default function Layout({ children, home }) {
+interface LayoutProps {
+  children: ReactNode;
+  home?: boolean;
+}
+export default function Layout({ children, home }: LayoutProps) {
   return (
     <div className={styles.container}>
       <Head>
