@@ -1,8 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
+import Layout from '../components/layout';
 export default function Profile() {
   return (
-    <>
+    <Layout>
+      <Head>
+        <title>nanasun</title>
+      </Head>
       <h1>About Me - NaNa</h1>
       <h2>
         <Link href="/">
@@ -15,6 +20,6 @@ export default function Profile() {
         width={144} // Desired size with correct aspect ratio
         alt="NaNa"
       />
-    </>
+    </Layout>
   );
 }
