@@ -3,7 +3,7 @@ import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
-import { AllPostsDataType } from '../types';
+import { AllPostsDataType } from '../../types/types';
 export function getStaticPaths() {
   const paths = getAllPostIds();
   return {
@@ -12,7 +12,7 @@ export function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: { params: { id: string } }) {
+export async function getStaticProps({ params }: { params: AllPostsDataType }) {
   const postData = await getPostData(params.id);
   return {
     props: {
