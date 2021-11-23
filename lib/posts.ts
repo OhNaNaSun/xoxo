@@ -22,11 +22,11 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data,
+      ...(matterResult.data as { date: string; id: string }),
     };
   });
   // Sort posts by date
-  return (allPostsData as { date: string; id: string }[]).sort(({ date: a }, { date: b }) => {
+  return allPostsData.sort(({ date: a }, { date: b }) => {
     if (a < b) {
       return 1;
     } else if (a > b) {

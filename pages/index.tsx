@@ -5,14 +5,16 @@ import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
 import { AllPostsDataType } from '../types/types';
-export function getStaticProps() {
+import { GetStaticProps } from 'next';
+
+export const getStaticProps: GetStaticProps = () => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
     },
   };
-}
+};
 
 type HomeProps = {
   allPostsData: AllPostsDataType[];

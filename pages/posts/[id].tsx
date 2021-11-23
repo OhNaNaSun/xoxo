@@ -4,22 +4,23 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import { AllPostsDataType } from '../../types/types';
-export function getStaticPaths() {
+import { GetStaticProps, GetStaticPaths } from 'next';
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPostIds();
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }: { params: AllPostsDataType }) {
-  const postData = await getPostData(params.id);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postData = await getPostData(params.id as string);
   return {
     props: {
       postData,
     },
   };
-}
+};
 
 export default function Post({ postData }: { postData: AllPostsDataType }) {
   return (
