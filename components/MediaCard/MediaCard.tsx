@@ -11,7 +11,7 @@ export default function MediaCard({ description, publishedAt, channelId, default
     <Card sx={{ maxWidth: 700 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: 'transparent' }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: 'transparent' }} aria-label="youtube">
             🌟
           </Avatar>
         }

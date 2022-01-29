@@ -54,15 +54,15 @@ export default function VerticalTabs({ tabContents }) {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="Youtube" {...a11yProps(0)} />
-        <Tab label="Github" {...a11yProps(1)} />
+        <Tab label="Github" {...a11yProps(0)} />
+        <Tab label="Youtube" {...a11yProps(1)} />
         <Tab label="Instagram" {...a11yProps(2)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         {tabContents[0]}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        {tabContents[1]}
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

@@ -48,8 +48,8 @@ export default function Layout({ children, home }: LayoutProps) {
                   priority
                   src={profilePicUrl}
                   className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
+                  height={144}
+                  width={144}
                   alt={name}
                 />
               </a>
