@@ -41,12 +41,27 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  counter-reset: listCounter;
+  font-family: Mija;
 }
 
 .listItem {
-  margin: 0 0 1.25rem;
+  /* margin: 0 0 1.25rem; */
+  padding-left: calc(1.65em + 0.7vw);
+  position: relative;
+  margin-bottom: 1em;
 }
 
 .lightText {
-  color: #666;
+  color: #bdddff;
+}
+.listItem::before {
+  counter-increment: listCounter;
+  content: counter(listCounter, decimal-leading-zero);
+  font-size: 0.7em;
+  font-weight: 700;
+  color: #d33a2c;
+  left: 0.8em;
+  position: absolute;
+  font-family: Mija;
 }

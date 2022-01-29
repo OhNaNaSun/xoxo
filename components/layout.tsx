@@ -7,6 +7,7 @@ import { ReactNode } from 'react';
 
 const name = 'NaNa';
 export const siteTitle = 'Profile Website';
+export const profilePicUrl = '/images/profile.jpg';
 interface LayoutProps {
   children: ReactNode;
   home?: boolean;
@@ -31,7 +32,7 @@ export default function Layout({ children, home }: LayoutProps) {
           <>
             <Image
               priority
-              src="/images/profile_pic.png"
+              src={profilePicUrl}
               className={utilStyles.borderCircle}
               height={144}
               width={144}
@@ -45,7 +46,7 @@ export default function Layout({ children, home }: LayoutProps) {
               <a>
                 <Image
                   priority
-                  src="/images/profile_pic.png"
+                  src={profilePicUrl}
                   className={utilStyles.borderCircle}
                   height={108}
                   width={108}

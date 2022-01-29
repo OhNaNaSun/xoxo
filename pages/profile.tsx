@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import Layout from '../components/layout';
+import Layout, { profilePicUrl } from '../components/layout';
 export default function Profile() {
   return (
     <Layout>
@@ -15,7 +15,7 @@ export default function Profile() {
         </Link>
       </h2>
       <Image
-        src="/images/profile_pic.png" // Route of the image file
+        src={profilePicUrl} // Route of the image file
         height={144} // Desired size with correct aspect ratio
         width={144} // Desired size with correct aspect ratio
         alt="NaNa"

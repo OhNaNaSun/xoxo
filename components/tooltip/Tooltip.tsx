@@ -1,9 +1,13 @@
 import 'react';
-const Tooltip = () => {
+interface TooltipProps {
+  title: string;
+  position?: 'top' | 'bottom' | 'left' | 'right';
+}
+const Tooltip: React.FC<TooltipProps> = ({ title, position }) => {
   return (
     <div className="tooltip">
-      Hover over me
-      <span className="tooltiptext">Tooltip text</span>
+      hover on me
+      <span className="tooltiptext">{title}</span>
     </div>
   );
 };

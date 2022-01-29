@@ -26,8 +26,13 @@ export default function Home({ allPostsData }: HomeProps) {
         <title>{siteTitle}</title>
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
+        {/* <h2 className={utilStyles.headingLg}>Blog</h2> */}
+        <ol className={utilStyles.list}>
+          <li className={utilStyles.listItem} key="1">
+            <Link href="/profile">
+              <a>Profile</a>
+            </Link>
+          </li>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
@@ -39,7 +44,7 @@ export default function Home({ allPostsData }: HomeProps) {
               </small>
             </li>
           ))}
-        </ul>
+        </ol>
       </section>
     </Layout>
   );

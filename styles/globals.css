@@ -5,15 +5,25 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
   line-height: 1.6;
-  font-size: 18px;
+  /* font-size: 18px; */
+  background-color: #162c35;
+  color: #e5e5e5;
+  font-size: 1.1em;
 }
-
+body li,
+body p {
+  line-height: calc(1.5em + 0.2vw);
+  word-break: break-word;
+}
 * {
   box-sizing: border-box;
 }
-
+::after,
+::before {
+  box-sizing: border-box;
+}
 a {
-  color: #0070f3;
+  color: #6fd2ff;
   text-decoration: none;
 }
 
