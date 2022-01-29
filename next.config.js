@@ -4,4 +4,7 @@ module.exports = {
     ignoreDevErrors: true,
     ignoreBuildErrors: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
