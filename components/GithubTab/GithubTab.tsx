@@ -16,9 +16,7 @@ export default function GithubTab() {
         const res = await fetch('https://api.github.com/users/OhNaNaSun/repos');
         const data = await res.json();
         if (data) {
-          setRepoList(
-            data.sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()).slice(0, 5)
-          );
+          setRepoList(data.sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()));
         }
       } catch {}
     })();

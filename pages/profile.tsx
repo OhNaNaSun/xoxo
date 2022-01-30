@@ -3,9 +3,17 @@ import Layout from '../components/layout';
 import VerticalTabs from '../components/VerticalTabs/VerticalTabs';
 import YoububeTab from '../components/YoutubeTab/YoutubeTab';
 import GithubTab from '../components/GithubTab/GithubTab';
+import dynamic from 'next/dynamic';
+const MusicPlayer = dynamic(
+  () => {
+    return import('../components/MusicPlayer/MusicPlayer');
+  },
+  { ssr: false }
+);
 export default function Profile() {
   return (
     <Layout>
+      <MusicPlayer />
       <Head>
         <title>nanasun</title>
       </Head>

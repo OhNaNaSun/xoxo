@@ -3,12 +3,17 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-
+import styled from 'styled-components';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
+const StyledTab = styled(Tab)`
+  button {
+    align-items: flex-end;
+  }
+`;
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, classes, ...other } = props;
@@ -54,9 +59,9 @@ export default function VerticalTabs({ tabContents }) {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="Github" {...a11yProps(0)} />
-        <Tab label="Youtube" {...a11yProps(1)} />
-        <Tab label="Instagram" {...a11yProps(2)} />
+        <StyledTab label="Github" {...a11yProps(0)} />
+        <StyledTab label="Youtube" {...a11yProps(1)} />
+        <StyledTab label="Instagram" {...a11yProps(2)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         {tabContents[0]}
