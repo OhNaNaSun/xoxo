@@ -28,7 +28,7 @@ export default function Home({ allPostsData }: HomeProps) {
         <ol className={utilStyles.list}>
           <li className={utilStyles.listItem} key="1">
             <Link href="/profile">
-              <a>Profile</a>
+              <a>My Social Media</a>
             </Link>
           </li>
           {allPostsData.map(({ id, date, title }) => (

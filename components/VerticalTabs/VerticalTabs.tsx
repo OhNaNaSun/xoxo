@@ -9,7 +9,7 @@ interface TabPanelProps {
   index: number;
   value: number;
 }
-const StyledTab = styled(Tab)`
+const StyledTabs = styled(Tabs)`
   button {
     align-items: flex-end;
   }
@@ -50,19 +50,28 @@ export default function VerticalTabs({ tabContents }) {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, display: 'flex', minHeight: 600 }}>
-      <Tabs
+    <Box
+      sx={{
+        flexGrow: 1,
+        display: 'flex',
+        minHeight: 600,
+      }}
+    >
+      <StyledTabs
         orientation="vertical"
         variant="scrollable"
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        sx={{
+          borderRight: 1,
+          borderColor: 'divider',
+        }}
       >
-        <StyledTab label="Github" {...a11yProps(0)} />
-        <StyledTab label="Youtube" {...a11yProps(1)} />
-        <StyledTab label="Instagram" {...a11yProps(2)} />
-      </Tabs>
+        <Tab label="Github" {...a11yProps(0)} />
+        <Tab label="Youtube" {...a11yProps(1)} />
+        <Tab label="Instagram" {...a11yProps(2)} />
+      </StyledTabs>
       <TabPanel value={value} index={0}>
         {tabContents[0]}
       </TabPanel>
