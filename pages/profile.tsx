@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 import VerticalTabs from '../components/VerticalTabs/VerticalTabs';
 import YoububeTab from '../components/YoutubeTab/YoutubeTab';
 import GithubTab from '../components/GithubTab/GithubTab';
+import InstagramTab from '../components/InstagramTab/InstagramTab';
 import dynamic from 'next/dynamic';
 const MusicPlayer = dynamic(
   () => {
@@ -10,7 +11,8 @@ const MusicPlayer = dynamic(
   },
   { ssr: false }
 );
-export default function Profile() {
+
+export default function Profile({ data }) {
   return (
     <Layout>
       <MusicPlayer />
@@ -18,7 +20,7 @@ export default function Profile() {
         <title>nanasun</title>
       </Head>
       <h1>About Me - NaNa</h1>
-      <VerticalTabs tabContents={[<GithubTab />, <YoububeTab />]} />
+      <VerticalTabs tabContents={[<GithubTab />, <YoububeTab />, <InstagramTab />]} />
     </Layout>
   );
 }

@@ -372,7 +372,7 @@ const options = {
   },
 
   onDestroyed(currentPlayId, audioLists, audioInfo) {
-    console.log('onDestroyed:', currentPlayId, audioLists, audioInfo);
+    // console.log('onDestroyed:', currentPlayId, audioLists, audioInfo);
   },
 
   onCoverClick(mode, audioLists, audioInfo) {

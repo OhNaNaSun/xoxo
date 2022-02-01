@@ -428,7 +428,6 @@ export default class ReactJkMusicPlayer extends PureComponent {
     }
 
     const shouldShowPlayIcon = !playing || this.state.currentVolumeFade === VOLUME_FADE.OUT;
-    console.log('container:', container);
     return createPortal(
       <div
         className={cls(

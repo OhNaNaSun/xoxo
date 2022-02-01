@@ -21,6 +21,7 @@ function TabPanel(props: TabPanelProps) {
   return (
     <div
       role="tabpanel"
+      style={{ flexGrow: '1' }}
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
@@ -79,7 +80,7 @@ export default function VerticalTabs({ tabContents }) {
         {tabContents[1]}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        {tabContents[2]}
       </TabPanel>
     </Box>
   );
