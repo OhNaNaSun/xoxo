@@ -11,9 +11,23 @@ import axios from 'axios';
 import useFetch from '../../hooks/useFetch';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+type DataType = {
+  id: string;
+  html_url: string;
+  pushed_at: string;
+  full_name: string;
+  topics: string[];
+  description: string;
+}[];
 export default function GithubTab() {
-  const [data, isLoading] = useFetch(() => axios.get('https://api.github.com/users/OhNaNaSun/repos'));
-  const repoList = data?.sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf());
+  const [data, isLoading] = useFetch(() => axios.get<DataType>('https://api.github.com/users/OhNaNaSun/repos')) as [
+    DataType,
+    boolean
+  ];
+  const repoList = data?.sort(
+    (a: { pushed_at: string }, b: { pushed_at: string }) =>
+      new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()
+  );
   return (
     <div>
       {isLoading ? (
@@ -42,7 +56,7 @@ export default function GithubTab() {
                 <CardContent>
                   <Typography component="div" sx={{ mb: 1.5 }} color="text.secondary">
                     <Stack direction="row" spacing={1}>
-                      {topics.map((topic) => (
+                      {topics.map((topic: string) => (
                         <Chip size="small" key={topic} label={topic} />
                       ))}
                     </Stack>

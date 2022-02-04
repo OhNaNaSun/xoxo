@@ -6,7 +6,22 @@ import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Avatar from '@mui/material/Avatar';
-export default function MediaCard({ description, publishedAt, channelId, defaultThumbnail, title, videoId }) {
+interface MediaCardProps {
+  description;
+  publishedAt: string;
+  channelId: string;
+  defaultThumbnail: { url: string };
+  title: string;
+  videoId: string;
+}
+export default function MediaCard({
+  description,
+  publishedAt,
+  channelId,
+  defaultThumbnail,
+  title,
+  videoId,
+}: MediaCardProps) {
   return (
     <Card sx={{ maxWidth: 700 }}>
       <CardHeader

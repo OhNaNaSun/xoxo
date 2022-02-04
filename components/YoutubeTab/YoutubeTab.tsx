@@ -4,13 +4,14 @@ import useFetch from '../../hooks/useFetch';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { YoutubeDataType } from '../../types/types';
 export default function YoububeTab() {
   const [data, isLoading] = useFetch(() => {
     return axios.get(
       'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId=PL3NGRQjfpiMNBKxKq-O8WcM0FLVO4GYP3&key=AIzaSyD2eP8D5vGdzoWKJX8CwpR5gOKUhVsnimk'
     );
-  });
-  const videoList = data?.items.slice(0, 5).map((i: { snippet: unknown }) => i.snippet);
+  }) as [YoutubeDataType, boolean];
+  const videoList = data?.items.slice(0, 5).map((i) => i.snippet);
   return (
     <div>
       {isLoading ? (

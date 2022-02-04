@@ -12,7 +12,7 @@ const MusicPlayer = dynamic(
   { ssr: false }
 );
 
-export default function Profile({ data }) {
+export default function Profile() {
   return (
     <Layout>
       <MusicPlayer />
@@ -20,7 +20,7 @@ export default function Profile({ data }) {
         <title>nanasun</title>
       </Head>
       <h1>About Me - NaNa</h1>
-      <VerticalTabs tabContents={[<GithubTab />, <YoububeTab />, <InstagramTab />]} />
+      <VerticalTabs tabContents={[<GithubTab key="0" />, <YoububeTab key="1" />, <InstagramTab key="2" />]} />
     </Layout>
   );
 }

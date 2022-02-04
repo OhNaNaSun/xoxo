@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import styled from 'styled-components';
@@ -16,7 +17,7 @@ const StyledTabs = styled(Tabs)`
 `;
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, classes, ...other } = props;
+  const { children, value, index, ...other } = props;
 
   return (
     <div
@@ -42,8 +43,11 @@ function a11yProps(index: number) {
     'aria-controls': `vertical-tabpanel-${index}`,
   };
 }
-
-export default function VerticalTabs({ tabContents }) {
+type TabContentsType = ReactNode[];
+interface VerticalTabsProps {
+  tabContents: TabContentsType;
+}
+export default function VerticalTabs({ tabContents }: VerticalTabsProps) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
