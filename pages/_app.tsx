@@ -8,7 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ColorModeContext } from '../components/ThemeSwitcher/ThemeSwitcher';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {

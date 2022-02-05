@@ -19,7 +19,7 @@ function ThemeSwitcher() {
         bgcolor: 'background.default',
         color: 'text.primary',
         borderRadius: 1,
-        p: 3,
+        p: 1,
       }}
     >
       <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
