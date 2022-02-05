@@ -1,4 +1,6 @@
 import '../styles/globals.css';
+import '../styles/musicPlayer.css';
+import 'highlight.js/styles/vs2015.css';
 import { AppProps } from 'next/app';
 import * as React from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
