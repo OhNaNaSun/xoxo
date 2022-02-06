@@ -33,3 +33,9 @@ img {
   max-width: 100%;
   display: block;
 }
+.md_container pre {
+  background-color: #282c34;
+  padding: 7px;
+  font-family: 'Sans Mono', 'Consolas', 'Courier', monospace;
+  border-radius: 6px;
+}

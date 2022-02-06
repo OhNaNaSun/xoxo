@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import '../styles/musicPlayer.css';
-import 'highlight.js/styles/vs2015.css';
+import 'highlight.js/styles/atom-one-dark.css';
 import { AppProps } from 'next/app';
 import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';

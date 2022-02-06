@@ -1,5 +1,3 @@
-import 'highlight.js/styles/vs2015.css';
-
 // https://codepen.io/KrissSteindals/pen/yrBdQe?editors=0110
 import * as Showdown from 'showdown';
 import highlightjs from 'highlight.js';
