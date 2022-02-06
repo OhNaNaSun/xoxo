@@ -9,8 +9,7 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import useFetch from '../../hooks/useFetch';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
 type DataType = {
   id: string;
   html_url: string;
@@ -30,48 +29,69 @@ export default function GithubTab() {
   );
   return (
     <div>
-      {isLoading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', margin: '2rem' }}>
-          <CircularProgress size="20px" />
-        </Box>
-      ) : (
-        repoList?.map(({ id, html_url, full_name, pushed_at, topics, description }) => {
-          return (
-            <Fragment key={id}>
-              <Card sx={{ maxWidth: 700 }}>
-                <CardHeader
-                  avatar={
+      {repoList?.map(({ id, html_url, full_name, pushed_at, topics, description }) => {
+        return (
+          <Fragment key={id}>
+            <Card sx={{ maxWidth: 700 }}>
+              <CardHeader
+                avatar={
+                  isLoading ? (
+                    <Skeleton animation="wave" variant="circular" width={40} height={40} />
+                  ) : (
                     <Avatar sx={{ bgcolor: 'transparent' }} aria-label="github">
                       🌟
                     </Avatar>
-                  }
-                  action={
+                  )
+                }
+                action={
+                  isLoading ? null : (
                     <Link className="right" color="primary" variant="caption" href={html_url}>
                       CHECK
                     </Link>
-                  }
-                  title={full_name}
-                  subheader={new Date(pushed_at).toLocaleDateString()}
-                />
-                <CardContent>
-                  <Typography component="div" sx={{ mb: 1.5 }} color="text.secondary">
-                    <Stack direction="row" spacing={1}>
-                      {topics.map((topic: string) => (
-                        <Chip size="small" key={topic} label={topic} />
-                      ))}
-                    </Stack>
-                  </Typography>
-                  <Typography variant="body2">
-                    {description}
-                    <br />
-                  </Typography>
-                </CardContent>
-              </Card>
-              <br />
-            </Fragment>
-          );
-        })
-      )}
+                  )
+                }
+                title={
+                  isLoading ? (
+                    <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
+                  ) : (
+                    full_name
+                  )
+                }
+                subheader={
+                  isLoading ? (
+                    <Skeleton animation="wave" height={10} width="40%" />
+                  ) : (
+                    new Date(pushed_at).toLocaleDateString()
+                  )
+                }
+              />
+              <CardContent>
+                {isLoading ? (
+                  <>
+                    <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+                    <Skeleton animation="wave" height={10} width="80%" />
+                  </>
+                ) : (
+                  <>
+                    <Typography component="div" sx={{ mb: 1.5 }} color="text.secondary">
+                      <Stack direction="row" spacing={1}>
+                        {topics.map((topic: string) => (
+                          <Chip size="small" key={topic} label={topic} />
+                        ))}
+                      </Stack>
+                    </Typography>
+                    <Typography variant="body2">
+                      {description}
+                      <br />
+                    </Typography>
+                  </>
+                )}
+              </CardContent>
+            </Card>
+            <br />
+          </Fragment>
+        );
+      })}
     </div>
   );
 }

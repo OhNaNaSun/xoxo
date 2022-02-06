@@ -2,8 +2,6 @@ import { Fragment } from 'react';
 import MediaCard from '../MediaCard/MediaCard';
 import useFetch from '../../hooks/useFetch';
 import axios from 'axios';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import { YoutubeDataType } from '../../types/types';
 export default function YoububeTab() {
   const [data, isLoading] = useFetch(() => {
@@ -14,31 +12,26 @@ export default function YoububeTab() {
   const videoList = data?.items.slice(0, 5).map((i) => i.snippet);
   return (
     <div>
-      {isLoading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', margin: '2rem' }}>
-          <CircularProgress size="20px" />
-        </Box>
-      ) : (
-        videoList?.map(({ position, thumbnails, channelId, description, publishedAt, title, resourceId }) => {
-          const { videoId } = resourceId;
-          const defaultThumbnail = thumbnails.high;
-          return (
-            <Fragment key={position}>
-              <MediaCard
-                {...{
-                  description,
-                  publishedAt,
-                  defaultThumbnail,
-                  channelId,
-                  title,
-                  videoId,
-                }}
-              />
-              <br />
-            </Fragment>
-          );
-        })
-      )}
+      {videoList?.map(({ position, thumbnails, channelId, description, publishedAt, title, resourceId }) => {
+        const { videoId } = resourceId;
+        const defaultThumbnail = thumbnails.high;
+        return (
+          <Fragment key={position}>
+            <MediaCard
+              {...{
+                isLoading,
+                description,
+                publishedAt,
+                defaultThumbnail,
+                channelId,
+                title,
+                videoId,
+              }}
+            />
+            <br />
+          </Fragment>
+        );
+      })}
     </div>
   );
 }
