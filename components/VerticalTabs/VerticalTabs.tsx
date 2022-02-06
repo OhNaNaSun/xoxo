@@ -4,17 +4,11 @@ import Tab from '@mui/material/Tab';
 import { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import styled from 'styled-components';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
-const StyledTabs = styled(Tabs)`
-  button {
-    align-items: flex-end;
-  }
-`;
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -62,7 +56,7 @@ export default function VerticalTabs({ tabContents }: VerticalTabsProps) {
         minHeight: 600,
       }}
     >
-      <StyledTabs
+      <Tabs
         orientation="vertical"
         variant="scrollable"
         value={value}
@@ -71,12 +65,13 @@ export default function VerticalTabs({ tabContents }: VerticalTabsProps) {
         sx={{
           borderRight: 1,
           borderColor: 'divider',
+          display: 'flex',
         }}
       >
-        <Tab label="Github" {...a11yProps(0)} />
-        <Tab label="Youtube" {...a11yProps(1)} />
-        <Tab label="Instagram" {...a11yProps(2)} />
-      </StyledTabs>
+        <Tab sx={{ alignItems: 'end' }} label="Github" {...a11yProps(0)} />
+        <Tab sx={{ alignItems: 'end' }} label="Youtube" {...a11yProps(1)} />
+        <Tab sx={{ alignItems: 'end' }} label="Instagram" {...a11yProps(2)} />
+      </Tabs>
       <TabPanel value={value} index={0}>
         {tabContents[0]}
       </TabPanel>
