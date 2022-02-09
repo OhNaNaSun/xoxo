@@ -12,5 +12,5 @@ export default async function (_: NextApiRequest, res: NextApiResponse) {
   //   (a: { pushed_at: string }, b: { pushed_at: string }) =>
   //     new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()
   // );
-  res.status(200).json(reponse.data);
+  res.status(200).json(response.data);
 }
