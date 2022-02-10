@@ -1,4 +1,7 @@
 module.exports = {
+  images: {
+    domains: ['scontent-lga3-1.cdninstagram.com'],
+  },
   reactStrictMode: true,
   typescript: {
     ignoreDevErrors: true,
@@ -6,5 +9,8 @@ module.exports = {
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  env: {
+    customKey: 'my-value',
   },
 };
