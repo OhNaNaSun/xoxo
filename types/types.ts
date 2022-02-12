@@ -6,15 +6,11 @@ export interface AllPostsDataType {
 }
 
 export type YoutubeDataType = {
-  items: {
-    snippet: {
-      position: string;
-      thumbnails: { high: { url: string } };
-      channelId: string;
-      description: string;
-      publishedAt: string;
-      title: string;
-      resourceId: { videoId: string };
-    };
-  }[];
-};
+  position: string;
+  thumbnails: { high: { url: string } };
+  channelId: string;
+  description: string;
+  publishedAt: string;
+  title: string;
+  resourceId: { videoId: string };
+}[];
