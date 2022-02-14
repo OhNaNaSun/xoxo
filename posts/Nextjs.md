@@ -1,6 +1,7 @@
 ---
 title: 'Fetching data in Nextjs'
 date: '2022-02-10'
+read: '4'
 ---
 
 ## 1. Pre-rendering

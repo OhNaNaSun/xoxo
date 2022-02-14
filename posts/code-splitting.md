@@ -1,6 +1,7 @@
 ---
 title: 'Code Splitting'
 date: '2021-11-09'
+read: '3'
 ---
 
 Code-Splitting is a feature supported by bundlers like [Webpack](https://webpack.js.org/guides/code-splitting/) , [Rollup](https://rollupjs.org/guide/en/#code-splitting) and Browserify (via [factor-bundle](https://github.com/browserify/factor-bundle) ) which can create multiple bundles that can be dynamically loaded at runtime.

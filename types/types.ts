@@ -3,6 +3,7 @@ export interface AllPostsDataType {
   date: string;
   title: string;
   contentHtml?: string;
+  read?: string;
 }
 
 export type YoutubeDataType = {

@@ -1,6 +1,7 @@
 ---
 title: 'Valid Palindrome'
 date: '2021-11-20'
+read: '3'
 ---
 
 [Valid Palindrome - LeetCode](https://leetcode.com/problems/valid-palindrome/)

@@ -31,14 +31,14 @@ export default function Home({ allPostsData }: HomeProps) {
               <a>My Social Media</a>
             </Link>
           </li>
-          {allPostsData.map(({ id, date, title }) => (
+          {allPostsData.map(({ id, date, title, read }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date dateString={date} />
+                <Date dateString={date} /> · {read} min read
               </small>
             </li>
           ))}
