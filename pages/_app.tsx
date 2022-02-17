@@ -6,7 +6,7 @@ import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ColorModeContext } from '../components/ThemeSwitcher/ThemeSwitcher';
-
+import { appWithTranslation } from 'next-i18next';
 function MyApp({ Component, pageProps }: AppProps) {
   const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
   const colorMode = React.useMemo(
@@ -37,4 +37,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
