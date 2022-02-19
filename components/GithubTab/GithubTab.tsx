@@ -19,17 +19,16 @@ type DataType = {
   description: string;
 }[];
 export default function GithubTab() {
-  const [data, isLoading] = useFetch(() => axios.get<DataType>('https://api.github.com/users/OhNaNaSun/repos')) as [
-    DataType,
-    boolean
-  ];
-  const repoList = data?.sort(
-    (a: { pushed_at: string }, b: { pushed_at: string }) =>
-      new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()
-  );
+  const [data, isLoading] = useFetch(() => axios.get('./api/ghrepos')) as [DataType, boolean];
+  const repoList = data
+    ? data.sort(
+        (a: { pushed_at: string }, b: { pushed_at: string }) =>
+          new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()
+      )
+    : [];
   return (
     <div>
-      {repoList?.map(({ id, html_url, full_name, pushed_at, topics, description }) => {
+      {repoList.map(({ id, html_url, full_name, pushed_at, topics, description }) => {
         return (
           <Fragment key={id}>
             <Card sx={{ maxWidth: 700 }}>
