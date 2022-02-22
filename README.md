@@ -1,1 +1,1 @@
-xoxo
+xoxo - personal website

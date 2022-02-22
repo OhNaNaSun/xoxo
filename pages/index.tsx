@@ -6,11 +6,14 @@ import Link from 'next/link';
 import Date from '../components/date';
 import { AllPostsDataType } from '../types/types';
 import { GetStaticProps } from 'next';
-export const getStaticProps: GetStaticProps = () => {
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
+      ...(await serverSideTranslations(locale, ['home'])),
     },
   };
 };
@@ -19,6 +22,7 @@ type HomeProps = {
   allPostsData: AllPostsDataType[];
 };
 export default function Home({ allPostsData }: HomeProps) {
+  const { t } = useTranslation('home');
   return (
     <Layout home>
       <Head>
@@ -28,7 +32,7 @@ export default function Home({ allPostsData }: HomeProps) {
         <ol className={utilStyles.list}>
           <li className={utilStyles.listItem} key="1">
             <Link href="/profile/gh">
-              <a>My Social Media</a>
+              <a>{t('link')}</a>
             </Link>
           </li>
           {allPostsData.map(({ id, date, title, read }) => (
