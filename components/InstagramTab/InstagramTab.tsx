@@ -10,7 +10,7 @@ interface DataType {
 }
 
 export default function InstagramTab() {
-  const { data } = useSWR<DataType>('./api/igmedias', (url) => fetch(url as string).then((res) => res.json()));
+  const { data } = useSWR<DataType>('/api/igmedias', (url) => fetch(url as string).then((res) => res.json()));
   const imgList = data ? data.data.filter(({ media_url }) => !media_url.includes('.mp4')) : [];
   const myLoader = (src: string) => {
     return `${src}`;

@@ -4,50 +4,32 @@ import Tab from '@mui/material/Tab';
 import { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
+import Link from 'next/link';
 
+interface VerticalTabsProps {
+  currentTabKey: number;
+  tabPanelContent: ReactNode;
+}
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children } = props;
 
   return (
-    <div
-      role="tabpanel"
-      style={{ flexGrow: '1' }}
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Container>
-          <Box>{children}</Box>
-        </Container>
-      )}
+    <div role="tabpanel" style={{ flexGrow: '1' }}>
+      <Container>
+        <Box>{children}</Box>
+      </Container>
     </div>
   );
 }
-
-function a11yProps(index: number) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
-type TabContentsType = ReactNode[];
-interface VerticalTabsProps {
-  tabContents: TabContentsType;
-}
-export default function VerticalTabs({ tabContents }: VerticalTabsProps) {
+export default function VerticalTabs({ currentTabKey, tabPanelContent }: VerticalTabsProps) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
+  React.useEffect(() => {
+    setValue(currentTabKey);
+  }, [currentTabKey]);
   return (
     <Box
       sx={{
@@ -59,8 +41,8 @@ export default function VerticalTabs({ tabContents }: VerticalTabsProps) {
       <Tabs
         orientation="vertical"
         variant="scrollable"
-        value={value}
         onChange={handleChange}
+        value={value}
         aria-label="Vertical tabs example"
         sx={{
           borderRight: 1,
@@ -68,18 +50,33 @@ export default function VerticalTabs({ tabContents }: VerticalTabsProps) {
           display: 'flex',
         }}
       >
-        <Tab sx={{ alignItems: 'end' }} label="Github" {...a11yProps(0)} />
-        <Tab sx={{ alignItems: 'end' }} label="Youtube" {...a11yProps(1)} />
-        <Tab sx={{ alignItems: 'end' }} label="Instagram" {...a11yProps(2)} />
+        <Tab
+          sx={{ alignItems: 'end' }}
+          label={
+            <Link href="/profile/gh" scroll={false}>
+              <a>GITHUB</a>
+            </Link>
+          }
+        />
+        <Tab
+          sx={{ alignItems: 'end' }}
+          label={
+            <Link href="/profile/yt" scroll={false}>
+              <a>YOUBUTE</a>
+            </Link>
+          }
+        />
+        <Tab
+          sx={{ alignItems: 'end' }}
+          label={
+            <Link href="/profile/ig" scroll={false}>
+              <a>Instagram</a>
+            </Link>
+          }
+        />
       </Tabs>
       <TabPanel value={value} index={0}>
-        {tabContents[0]}
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        {tabContents[1]}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        {tabContents[2]}
+        {tabPanelContent}
       </TabPanel>
     </Box>
   );

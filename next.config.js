@@ -13,4 +13,13 @@ module.exports = {
   env: {
     customKey: 'my-value',
   },
+  async redirects() {
+    return [
+      {
+        source: '/profile',
+        destination: '/profile/gh',
+        permanent: true,
+      },
+    ];
+  },
 };

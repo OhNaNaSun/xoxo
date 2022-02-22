@@ -27,7 +27,7 @@ export default function Home({ allPostsData }: HomeProps) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <ol className={utilStyles.list}>
           <li className={utilStyles.listItem} key="1">
-            <Link href="/profile">
+            <Link href="/profile/gh">
               <a>My Social Media</a>
             </Link>
           </li>

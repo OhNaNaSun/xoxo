@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import Avatar from '@mui/material/Avatar';
+import useSWR from 'swr';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
@@ -7,8 +8,6 @@ import Card from '@mui/material/Card';
 import Link from '@mui/material/Link';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import axios from 'axios';
-import useFetch from '../../hooks/useFetch';
 import Skeleton from '@mui/material/Skeleton';
 type DataType = {
   id: string;
@@ -19,13 +18,14 @@ type DataType = {
   description: string;
 }[];
 export default function GithubTab() {
-  const [data, isLoading] = useFetch(() => axios.get('./api/ghrepos')) as [DataType, boolean];
+  const { data } = useSWR<DataType>('/api/ghrepos', (url) => fetch(url as string).then((res) => res.json()));
   const repoList = data
     ? data.sort(
         (a: { pushed_at: string }, b: { pushed_at: string }) =>
           new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()
       )
     : [];
+  const isLoading = !data;
   return (
     <div>
       {repoList.map(({ id, html_url, full_name, pushed_at, topics, description }) => {

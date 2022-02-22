@@ -1,15 +1,14 @@
 import { Fragment } from 'react';
 import MediaCard from '../MediaCard/MediaCard';
-import useFetch from '../../hooks/useFetch';
-import axios from 'axios';
+import useSWR from 'swr';
 import { YoutubeDataType } from '../../types/types';
 export default function YoububeTab() {
-  const [data, isLoading] = useFetch(() => {
-    return axios.get('./api/ytvideos');
-  }) as [YoutubeDataType, boolean];
+  const { data } = useSWR<YoutubeDataType>('/api/ytvideos', (url) => fetch(url as string).then((res) => res.json()));
+  const isLoading = !data;
+  const ytData = data ? data : [];
   return (
     <div>
-      {data?.map(({ position, thumbnails, channelId, description, publishedAt, title, resourceId }) => {
+      {ytData.map(({ position, thumbnails, channelId, description, publishedAt, title, resourceId }) => {
         const { videoId } = resourceId;
         const defaultThumbnail = thumbnails.high;
         return (
