@@ -3,9 +3,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { ReactNode } from 'react';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import { useTheme } from '@mui/material/styles';
 import Link from 'next/link';
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 interface VerticalTabsProps {
   currentTabKey: number;
   tabPanelContent: ReactNode;
@@ -15,15 +15,14 @@ function TabPanel(props: TabPanelProps) {
 
   return (
     <div role="tabpanel" style={{ flexGrow: '1' }}>
-      <Container>
-        <Box>{children}</Box>
-      </Container>
+      <Box>{children}</Box>
     </div>
   );
 }
 export default function VerticalTabs({ currentTabKey, tabPanelContent }: VerticalTabsProps) {
   const [value, setValue] = React.useState(0);
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -33,13 +32,16 @@ export default function VerticalTabs({ currentTabKey, tabPanelContent }: Vertica
   return (
     <Box
       sx={{
+        gap: '10px',
         flexGrow: 1,
         display: 'flex',
         minHeight: 600,
+        width: '100%',
+        flexDirection: !matches ? 'column' : 'row',
       }}
     >
       <Tabs
-        orientation="vertical"
+        orientation={`${!matches ? 'horizontal' : 'vertical'}`}
         variant="scrollable"
         onChange={handleChange}
         value={value}
