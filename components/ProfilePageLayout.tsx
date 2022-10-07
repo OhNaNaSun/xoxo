@@ -18,7 +18,7 @@ interface ProfileProps {
 export default function Profile({ currentTabKey, tabPanelContent }: ProfileProps) {
   return (
     <Layout>
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
       <Head>
         <title>nanasun</title>
       </Head>

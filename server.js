@@ -3,11 +3,11 @@ const express = require('express');
 const next = require('next');
 
 const devProxy = {
-  '/api': {
-    target: 'https://xoxo.vercel.app/api/',
-    pathRewrite: { '^/api': '/' },
-    changeOrigin: true,
-  },
+  // '/api': {
+  //   target: 'https://xoxo.vercel.app/api/',
+  //   pathRewrite: { '^/api': '/' },
+  //   changeOrigin: true,
+  // },
 };
 
 const port = parseInt(process.env.PORT, 10) || 3000;

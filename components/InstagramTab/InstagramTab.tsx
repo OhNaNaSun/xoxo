@@ -2,11 +2,13 @@ import useSWR from 'swr';
 import ImageListItem from '@mui/material/ImageListItem';
 import Image from 'next/image';
 import { styled } from '@mui/material/styles';
+import Alert from '@mui/material/Alert';
 interface DataType {
   data: {
     id: string;
     media_url: string;
   }[];
+  message?: string;
 }
 const ImageGalleryList = styled('ul')(({ theme }) => ({
   display: 'grid',
@@ -26,13 +28,14 @@ const ImageGalleryList = styled('ul')(({ theme }) => ({
 
 export default function InstagramTab() {
   const { data } = useSWR<DataType>('/api/igmedias', (url) => fetch(url as string).then((res) => res.json()));
-  const imgList = data ? data.data.filter(({ media_url }) => !media_url.includes('.mp4')) : [];
+  const imgList = data ? data.data?.filter(({ media_url }) => !media_url.includes('.mp4')) : [];
   const myLoader = (src: string) => {
     return `${src}`;
   };
   return (
     <ImageGalleryList>
-      {imgList.map(({ id, media_url }) => (
+      {data?.message && <Alert severity="error">{data.message}</Alert>}
+      {imgList?.map(({ id, media_url }) => (
         <ImageListItem key={id}>
           <Image
             src={media_url}
