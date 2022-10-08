@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
 import useSWR from 'swr';
@@ -12,20 +12,26 @@ import Stack from '@mui/material/Stack';
 import Skeleton from '@mui/material/Skeleton';
 import { GithubDataType } from '../../types/types';
 export default function GithubTab() {
-  const { data } = useSWR<GithubDataType>('/api/ghrepos', (url) => fetch(url as string).then((res) => res.json()));
-  const repoList = data?.data
-    ? data?.data.sort(
-        (a: { pushed_at: string }, b: { pushed_at: string }) =>
-          new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()
-      )
-    : [];
-  const isLoading = !data;
+  const { data: resData } = useSWR<GithubDataType>('/api/ghrepos', (url) =>
+    fetch(url as string).then((res) => res.json())
+  );
+  const [postList, setPostList] = useState(
+    Array(5)
+      .fill(null)
+      .map((_, index) => {
+        return { id: index };
+      })
+  );
+  useEffect(() => {
+    resData?.data && setPostList(resData.data);
+  }, [resData]);
+  const isLoading = !resData;
   return (
     <div>
-      {data?.message ? (
-        <Alert severity="error">{data.message}</Alert>
+      {resData?.message ? (
+        <Alert severity="error">{resData.message}</Alert>
       ) : (
-        repoList.map(({ id, html_url, full_name, pushed_at, topics, description }) => {
+        postList.map(({ id, html_url, full_name, pushed_at, topics, description }) => {
           return (
             <Fragment key={id}>
               <Card sx={{ maxWidth: 700 }}>
@@ -71,7 +77,7 @@ export default function GithubTab() {
                     <>
                       <Typography component="div" sx={{ mb: 1.5 }} color="text.secondary">
                         <Stack direction="row" spacing={1}>
-                          {topics.map((topic: string) => (
+                          {topics?.map((topic: string) => (
                             <Chip size="small" key={topic} label={topic} />
                           ))}
                         </Stack>
