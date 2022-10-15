@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ColorModeContext } from '../components/ThemeSwitcher/ThemeSwitcher';
 import { appWithTranslation } from 'next-i18next';
+import ErrorBoundary from '../components/ErrorBoundary';
 function MyApp({ Component, pageProps }: AppProps) {
   const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
   const colorMode = React.useMemo(
@@ -28,12 +29,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     [mode]
   );
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <ErrorBoundary>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </ErrorBoundary>
   );
 }
 

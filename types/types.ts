@@ -5,17 +5,18 @@ export interface AllPostsDataType {
   contentHtml?: string;
   read?: string;
 }
+export type YoutubeItemType = {
+  position: string;
+  thumbnails?: { high: { url: string } };
+  channelId?: string;
+  description?: string;
+  publishedAt?: string;
+  title?: string;
+  resourceId?: { videoId: string };
+}[];
 
 export type YoutubeDataType = {
-  data: {
-    position: string;
-    thumbnails: { high: { url: string } };
-    channelId: string;
-    description: string;
-    publishedAt: string;
-    title: string;
-    resourceId: { videoId: string };
-  }[];
+  data: YoutubeItemType;
   message?: string;
 };
 export type GithubDataType = {
