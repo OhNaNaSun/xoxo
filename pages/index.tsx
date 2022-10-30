@@ -32,7 +32,12 @@ export default function Home({ allPostsData }: HomeProps) {
         <ol className={utilStyles.list}>
           <li className={utilStyles.listItem} key="1">
             <Link href="/profile/gh">
-              <a>{t('link')}</a>
+              <a>{t('media_link')}</a>
+            </Link>
+          </li>
+          <li className={utilStyles.listItem} key="2">
+            <Link href="/projects/a">
+              <a>{t('projects_link')}</a>
             </Link>
           </li>
           {allPostsData.map(({ id, date, title, read }) => (
